@@ -16,10 +16,10 @@
 **	
 *	\param start The screen coordinates for the beginning of the line
 *	\param end The screen coordinates for the end of the line
-*	\param color The pointer to the color in which the line should appear
+*	\param color The color in which the line should appear
 *
 */
-void graphics_drawLine(screen_pos_t start, screen_pos_t end, RGBcolor_t *color){
+void graphics_drawLine(screen_pos_t start, screen_pos_t end, RGBcolor_t color){
 
 	if(end.x < start.x){
 		graphics_drawLine(end, start, color);
@@ -85,10 +85,10 @@ void graphics_drawLine(screen_pos_t start, screen_pos_t end, RGBcolor_t *color){
 **
 *	\param start The screen coordinates for one of the corners of the rectangle
 *	\param end The screen coordinates the opposing corner of the rectangle
-*	\param *color The pointer to the color in which the rectangle boundary should appear
+*	\param color The color in which the rectangle boundary should appear
 *
 */
-void graphics_drawRectangle(screen_pos_t start, screen_pos_t end, RGBcolor_t *color){
+void graphics_drawRectangle(screen_pos_t start, screen_pos_t end, RGBcolor_t color){
 	
 	if(start.x > end.x){
 		graphics_drawRectangle((screen_pos_t){end.x, start.y}, (screen_pos_t){start.x, end.y}, color);
@@ -124,10 +124,10 @@ void graphics_drawRectangle(screen_pos_t start, screen_pos_t end, RGBcolor_t *co
 **
 *	\param start The screen coordinates for one of the corners of the rectangle
 *	\param end The screen coordinates the opposing corner of the rectangle
-*	\param *color The pointer to the color in which the rectangle should appear
+*	\param color The color in which the rectangle should appear
 *
 */
-void graphics_drawSolidRectangle(screen_pos_t start, screen_pos_t end, RGBcolor_t *color){
+void graphics_drawSolidRectangle(screen_pos_t start, screen_pos_t end, RGBcolor_t color){
 
 	if(start.x > end.x){
 		graphics_drawSolidRectangle((screen_pos_t){end.x, start.y}, (screen_pos_t){start.x, end.y}, color);
@@ -152,18 +152,20 @@ void graphics_drawSolidRectangle(screen_pos_t start, screen_pos_t end, RGBcolor_
 
 
 
+
+
 /*! \brief Function that draws a bitmap on the coordinate specified
 **
 *	\param top_left The coordinate for the top left pixel of the bitmap, the rest of the bitmap will continue down and to the right
 *	\param bitmap The struct that contains the data required for the bitmap, easily generated with the bitmap.m file located in this project
 *
 */
-void graphics_drawBitmap(screen_pos_t top_left, bitmap_t bitmap){
+void graphics_drawBitmap(screen_pos_t top_left, const bitmap_t *bitmap){
 	st7775_setCursor(top_left);	
-	st7775_setRegion(top_left, (screen_pos_t){top_left.x + bitmap.xSize-1, top_left.y + bitmap.ySize-1});
+	st7775_setRegion(top_left, (screen_pos_t){top_left.x + bitmap->xSize-1, top_left.y + bitmap->ySize-1});
 	st7775_setGramMode();
-	for( uint16_t i = 0 ; i < bitmap.xSize * bitmap.ySize; i++){		
-		st7775_writePixel(&bitmap.data[i]);		
+	for( uint16_t i = 0 ; i < bitmap->xSize * bitmap->ySize; i++){		
+		st7775_writePixel(bitmap->data[i]);		
 	}
 	st7775_setRegion((screen_pos_t){0, 0},(screen_pos_t){LCD_X_MAX, LCD_Y_MAX});
 }

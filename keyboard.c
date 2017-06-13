@@ -9,31 +9,34 @@
 #include "sam.h"
 #include "keyboard.h"
 #include "text.h"
+#include "Fonts/Comic_Sans_Bold.h"
 
-const uint8_t KB_LETTER_POS_C3[] = {0,19,36,54,71,89,106,124,141,158,176,0};
-const uint8_t KB_LETTER_POS_C2[] = {6,24,42,60,78,96,114,132,150,168,0};
-const uint8_t KB_LETTER_POS_C1[] = {0,24,42,60,78,96,114,132,150,176,0};
-const uint8_t KB_LETTER_POS_C0[] = {0,24,42,132,150,176,0};
+#define KB_FONT &comic_sans_bold
 
-const uint8_t KB_LETTER_LO_C3[]	= {'q','w','e','r','t','y','u','i','o','p'};
-const uint8_t KB_LETTER_LO_C2[]	= {'a','s','d','f','g','h','j','k','l'};
-const uint8_t KB_LETTER_LO_C1[]	= {KB_CAPITAL_BTN,'z','x','c','v','b','n','m',KB_BACKSPACE_BTN};
-const uint8_t KB_LETTER_LO_C0[]	= {KB_SYMBOL_BTN,',',' ','.',KB_ENTER_BTN};
+static const uint8_t KB_LETTER_POS_C3[] = {0,19,36,54,71,89,106,124,141,158,176,0};
+static const uint8_t KB_LETTER_POS_C2[] = {6,24,42,60,78,96,114,132,150,168,0};
+static const uint8_t KB_LETTER_POS_C1[] = {0,24,42,60,78,96,114,132,150,176,0};
+static const uint8_t KB_LETTER_POS_C0[] = {0,24,42,132,150,176,0};
 
-const uint8_t KB_LETTER_HI_C3[]	= {'Q','W','E','R','T','Y','U','I','O','P'};
-const uint8_t KB_LETTER_HI_C2[]	= {'A','S','D','F','G','H','J','K','L'};
-const uint8_t KB_LETTER_HI_C1[]	= {KB_SMALL_BTN,'Z','X','C','V','B','N','M',KB_BACKSPACE_BTN};
-const uint8_t KB_LETTER_HI_C0[]	= {KB_SYMBOL_BTN,',',' ','.',KB_ENTER_BTN};
+static const uint8_t KB_LETTER_LO_C3[]	= {'q','w','e','r','t','y','u','i','o','p'};
+static const uint8_t KB_LETTER_LO_C2[]	= {'a','s','d','f','g','h','j','k','l'};
+static const uint8_t KB_LETTER_LO_C1[]	= {KB_CAPITAL_BTN,'z','x','c','v','b','n','m',KB_BACKSPACE_BTN};
+static const uint8_t KB_LETTER_LO_C0[]	= {KB_SYMBOL_BTN,',',' ','.',KB_ENTER_BTN};
 
-const uint8_t KB_SYMBOL_POS_C3[] = {0,19,36,54,71,89,106,124,141,158,176,0};
-const uint8_t KB_SYMBOL_POS_C2[] = {0,19,36,54,71,89,106,124,141,158,176,0};
-const uint8_t KB_SYMBOL_POS_C1[] = {6,24,42,60,78,96,114,132,150,176,0};
-const uint8_t KB_SYMBOL_POS_C0[] = {0,24,42,60,78,96,114,132,150,176,0};
+static const uint8_t KB_LETTER_HI_C3[]	= {'Q','W','E','R','T','Y','U','I','O','P'};
+static const uint8_t KB_LETTER_HI_C2[]	= {'A','S','D','F','G','H','J','K','L'};
+static const uint8_t KB_LETTER_HI_C1[]	= {KB_SMALL_BTN,'Z','X','C','V','B','N','M',KB_BACKSPACE_BTN};
+static const uint8_t KB_LETTER_HI_C0[]	= {KB_SYMBOL_BTN,',',' ','.',KB_ENTER_BTN};
 
-const uint8_t KB_SYMBOL_C3[] = {'1','2','3','4','5','6','7','8','9','0'};
-const uint8_t KB_SYMBOL_C2[] = {'@','#','$','_','&','-','+','(',')','/'};
-const uint8_t KB_SYMBOL_C1[] = {'%','*','\"','\'',':',';','!','\?',KB_BACKSPACE_BTN};
-const uint8_t KB_SYMBOL_C0[] = {KB_LETTERS_BTN,'<','~','|','^','=','\\','>',KB_ENTER_BTN};
+static const uint8_t KB_SYMBOL_POS_C3[] = {0,19,36,54,71,89,106,124,141,158,176,0};
+static const uint8_t KB_SYMBOL_POS_C2[] = {0,19,36,54,71,89,106,124,141,158,176,0};
+static const uint8_t KB_SYMBOL_POS_C1[] = {6,24,42,60,78,96,114,132,150,176,0};
+static const uint8_t KB_SYMBOL_POS_C0[] = {0,24,42,60,78,96,114,132,150,176,0};
+
+static const uint8_t KB_SYMBOL_C3[] = {'1','2','3','4','5','6','7','8','9','0'};
+static const uint8_t KB_SYMBOL_C2[] = {'@','#','$','_','&','-','+','(',')','/'};
+static const uint8_t KB_SYMBOL_C1[] = {'%','*','\"','\'',':',';','!','\?',KB_BACKSPACE_BTN};
+static const uint8_t KB_SYMBOL_C0[] = {KB_LETTERS_BTN,'<','~','|','^','=','\\','>',KB_ENTER_BTN};
 
 
 
@@ -54,12 +57,16 @@ void keyboard_render(const keyboard_keys_t *kb){
 	graphics_drawSolidRectangle((screen_pos_t){0,KB_COL0_S},(screen_pos_t){LCD_X_MAX,LCD_Y_MAX},KB_BCKGND_COLOR);
 	
 	uint8_t keyPos = 0;
+	uint8_t letterPos = 0;
 	
 	for(uint8_t col = 0 ; col <  KB_TOTAL_COLOMS; col++){
 		while(kb->keyPos[col][++keyPos]){
-			graphics_drawSolidRectangle((screen_pos_t){kb->keyPos[col][keyPos-1]+1, kb_colCords[col]}, (screen_pos_t){kb->keyPos[col][keyPos]-1, kb_colCords[col+1]-2}, KB_BORDER_COLOR);		
+			graphics_drawSolidRectangle((screen_pos_t){kb->keyPos[col][keyPos-1]+1, kb_colCords[col]}, (screen_pos_t){kb->keyPos[col][keyPos]-1, kb_colCords[col+1]-2}, KB_BORDER_COLOR);					
 			//graphics_drawSolidRectangle((screen_pos_t){kb->keyPos[col][keyPos-1]+2, kb_colCords[col]+1}, (screen_pos_t){kb->keyPos[col][keyPos]-2, kb_colCords[col+1]-3}, KB_KEY_COLOR);	
-			text_renderLetter((screen_pos_t){kb->keyPos[col][keyPos-1]+3, kb_colCords[col]+4},kb->characters[col][keyPos-1],(void*)0,KB_CHAR_COLOR);					
+				
+			letterPos = text_getLetterWidth(kb->characters[col][keyPos-1],KB_FONT);	
+			letterPos = kb->keyPos[col][keyPos-1] + (kb->keyPos[col][keyPos] - kb->keyPos[col][keyPos-1])/2 - letterPos/2;
+			text_renderLetter((screen_pos_t){letterPos, kb_colCords[col]+7},kb->characters[col][keyPos-1],KB_FONT,KB_CHAR_COLOR);
 		}
 		keyPos = 0;
 	}

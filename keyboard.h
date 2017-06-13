@@ -35,10 +35,11 @@ typedef struct{
 #define KB_COL1_S 	KB_COL2_S-KB_COL_SPACING
 #define KB_COL0_S	KB_COL1_S-KB_COL_SPACING
 
-#define KB_BORDER_COLOR &(RGBcolor_t){.red = 30, .green = 110, .blue = 110}
-#define KB_KEY_COLOR &(RGBcolor_t){.red = 71, .green = 71, .blue = 71}
-#define KB_CHAR_COLOR &(RGBcolor_t){.red = 220, .green = 220, .blue = 220}
-#define KB_BCKGND_COLOR &(RGBcolor_t){.red = 31, .green = 31, .blue = 31}
+#define KB_BORDER_COLOR (RGBcolor_t){.red = 30, .green = 110, .blue = 110}
+#define KB_KEY_COLOR (RGBcolor_t){.red = 71, .green = 71, .blue = 71}
+#define KB_CHAR_COLOR (RGBcolor_t){.red = 220, .green = 220, .blue = 220}
+#define KB_BCKGND_COLOR (RGBcolor_t){.red = 31, .green = 31, .blue = 31}
+	
 
 #define KB_CAPITAL_BTN		0x01
 #define KB_BACKSPACE_BTN	0x02

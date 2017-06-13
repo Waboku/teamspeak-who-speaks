@@ -37,8 +37,8 @@ void st7775_init();
 void st7775_setCursor(screen_pos_t position);
 void st7775_setRegion(screen_pos_t start, screen_pos_t end);
 void st7775_setGramMode(void);
-void st7775_writePixel(const RGBcolor_t *color);
-void st7775_writeSpecificPixel(screen_pos_t position, RGBcolor_t *color);
+void st7775_writePixel(const RGBcolor_t color);
+void st7775_writeSpecificPixel(screen_pos_t position, RGBcolor_t color);
 
 
 #endif /* ST7775_H_ */

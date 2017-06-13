@@ -207,22 +207,22 @@ void st7775_setGramMode(void){
 
 /*! \brief Writes three bytes tot the current Gram address corresponding to the specified color
 *
-*	\param *color pointer to the color that is send to the display
+*	\param color  the color that is send to the display
 *
 */
-void st7775_writePixel(const RGBcolor_t *color){
-	st7775_writeByte(color->red);
-	st7775_writeByte(color->green);
-	st7775_writeByte(color->blue);
+void st7775_writePixel(const RGBcolor_t color){
+	st7775_writeByte(color.red);
+	st7775_writeByte(color.green);
+	st7775_writeByte(color.blue);
 }
 
 /*! \brief Writes three bytes tot the specified Gram address corresponding to the specified color
 *
 *	\param position The coordinates of the pixel that is changed of color
-*	\param *color pointer to the color that is send to the display
+*	\param color the color that is send to the display
 *
 */
-void st7775_writeSpecificPixel(screen_pos_t position, RGBcolor_t *color){
+void st7775_writeSpecificPixel(screen_pos_t position, RGBcolor_t color){
 	st7775_setCursor(position);
 	writeWrReg(READ_WRITE_GRAM);
 	st7775_writePixel(color);

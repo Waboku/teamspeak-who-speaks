@@ -54,23 +54,21 @@ typedef struct{
 
 
 
-//RGBcolor_t png[2][2] = { { {.red = 255, .green = 0, .blue = 0}, {.red = 0, .green = 255, .blue = 0} },{ {.red = 0, .green = 0, .blue = 255}, {.red = 0, .green = 255, .blue = 255} } } ;
 
 //default colors 
+#define BLACK	(RGBcolor_t){.red = 0, .green = 0, .blue = 0}
+#define WHITE	(RGBcolor_t){.red = 255, .green = 255, .blue = 255}
+#define RED		(RGBcolor_t){.red = 255, .green = 0, .blue = 0}
+#define GREEN	(RGBcolor_t){.red = 0, .green = 255, .blue = 0}
+#define BLUE	(RGBcolor_t){.red = 0, .green = 0, .blue = 255}
+#define YELLOW	(RGBcolor_t){.red = 255, .green = 255, .blue = 0}
+#define MAGENTA (RGBcolor_t){.red = 255, .green = 0, .blue = 255}
+#define CYAN	(RGBcolor_t){.red = 0, .green = 255, .blue = 255}
 
-#define BLACK	&(RGBcolor_t){.red = 0, .green = 0, .blue = 0}
-#define WHITE	&(RGBcolor_t){.red = 255, .green = 255, .blue = 255}
-#define RED		&(RGBcolor_t){.red = 255, .green = 0, .blue = 0}
-#define GREEN	&(RGBcolor_t){.red = 0, .green = 255, .blue = 0}
-#define BLUE	&(RGBcolor_t){.red = 0, .green = 0, .blue = 255}
-#define YELLOW	&(RGBcolor_t){.red = 255, .green = 255, .blue = 0}
-#define MAGENTA &(RGBcolor_t){.red = 255, .green = 0, .blue = 255}
-#define CYAN	&(RGBcolor_t){.red = 0, .green = 255, .blue = 255}
-
-void graphics_drawLine(screen_pos_t start, screen_pos_t end, RGBcolor_t *color);
-void graphics_drawRectangle(screen_pos_t start, screen_pos_t end, RGBcolor_t *color);
-void graphics_drawSolidRectangle(screen_pos_t start, screen_pos_t end, RGBcolor_t *color);
-void graphics_drawBitmap(screen_pos_t top_left, bitmap_t bitmap);
+void graphics_drawLine(screen_pos_t start, screen_pos_t end, RGBcolor_t color);
+void graphics_drawRectangle(screen_pos_t start, screen_pos_t end, RGBcolor_t color);
+void graphics_drawSolidRectangle(screen_pos_t start, screen_pos_t end, RGBcolor_t color);
+void graphics_drawBitmap(screen_pos_t top_left, const bitmap_t *bitmap);
 
 
 #endif /* GRAPHICS_H_ */
