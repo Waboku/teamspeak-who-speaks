@@ -75,7 +75,9 @@ include_directories(
 add_subdirectory(ASF) 
 include_directories("${ASF_HEADERS}")
 
-add_executable(teamspeak-who-speaks
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${PROJECT_SOURCE_DIR})
+
+add_executable(teamspeak-who-speaks.elf
     "${PROJECT_SOURCE_DIR}/src/main.c"
     "${PROJECT_SOURCE_DIR}/src/stdio_setup.c"
     "${PROJECT_SOURCE_DIR}/src/usb_callback.c"
