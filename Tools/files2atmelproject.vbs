@@ -61,10 +61,6 @@ outputdirectory = "$(MSBuildProjectDirectory)"
 'Should be ok for Cmake generated Makefiles
 makefilesearch = "# Target rules for targets named "
 
-'The current path so we can determine the relative path
-projectpath = objFso.GetAbsolutePathName(".\")
-
-
 Function PrintFileList
   For Each file In includefiles
     WScript.Echo file
@@ -276,10 +272,18 @@ End Function
 
 Function GetMakefileLocation
     makefile = InputBox("Enter Makefile name/location:", "Enter Makefile", "Makefile")
+    If makefile = "" Then
+        WScript.Echo "Cancelled", vbSystemModal
+        WScript.Quit
+    End IF
 End Function
 
 Function GetProjectName
     projectname = InputBox("Project name not found, enter Project name", "Enter Project name")
+    If projectname = "" Then
+        WScript.Echo "Cancelled", vbSystemModal
+        WScript.Quit
+    End IF
 End Function
 
 Function FindProjectNameMakefile
@@ -307,21 +311,22 @@ Function FindProjectNameMakefile
     objMakefile.Close
 End Function
 
-Function SelectFolder(myStartFolder)
+Function SelectFolder
     SelectFolder = vbNull
 
-    Set objFolder = objShellApp.BrowseForFolder(0, "Select Folder", 0, myStartFolder)
-    If IsObject( objfolder ) Then 
+    Set objFolder = objShellApp.BrowseForFolder(0, "Select Folder", 0,"")
+    IF (Not objFolder Is Nothing) Then
         SelectFolder = objFolder.Self.Path
     End If
 End Function
 
 Function SetStartDir
-    strPath = SelectFolder(objShell.CurrentDirectory)
+    strPath = SelectFolder()
     If strPath = vbNull Then
-        WScript.Echo "Cancelled"
+        WScript.Echo "Cancelled", vbSystemModal
         WScript.Quit
     Else
+        projectpath = strPath
         objShell.CurrentDirectory = strPath
     End If
 End Function
