@@ -205,7 +205,7 @@ Function GenerateAtmelStudioCproj(outfile)
     objPropertyGroupRelease.appendChild objUsesExternalMakeFileRelease
 
     Set objExternalMakeFilePathRelease = xmlDoc.createElement("ExternalMakeFilePath")
-    objExternalMakeFilePathRelease.Text = "Makefile"
+    objExternalMakeFilePathRelease.Text = makefile
     objPropertyGroupRelease.appendChild objExternalMakeFilePathRelease
 
     Set objBuildTargetRelease = xmlDoc.createElement("BuildTarget")
@@ -225,7 +225,7 @@ Function GenerateAtmelStudioCproj(outfile)
     objPropertyGroupDebug.appendChild objUsesExternalMakeFileDebug
 
     Set objExternalMakeFilePathDebug = xmlDoc.createElement("ExternalMakeFilePath")
-    objExternalMakeFilePathDebug.Text = "Makefile"
+    objExternalMakeFilePathDebug.Text = makefile
     objPropertyGroupDebug.appendChild objExternalMakeFilePathDebug
 
     Set objBuildTargetDebug = xmlDoc.createElement("BuildTarget")
@@ -271,7 +271,7 @@ Function GenerateAtmelStudioCproj(outfile)
 End Function
 
 Function GetMakefileLocation
-    makefile = InputBox("Enter Makefile name/location:", "Enter Makefile", "Makefile")
+    makefile = InputBox("Enter Makefile location (relative to the project):", "Enter Makefile", "Makefile")
     If makefile = "" Then
         WScript.Echo "Cancelled", vbSystemModal
         WScript.Quit
