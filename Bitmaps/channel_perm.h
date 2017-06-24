@@ -14,7 +14,7 @@
 
 const RGBcolor_t channel_perm_data[196];
 
-bitmap_t channel_perm = {.xSize = 14, .ySize = 14, .data = channel_perm_data};
+const bitmap_t channel_perm = {.xSize = 14, .ySize = 14, .data = channel_perm_data};
 
 /*The image data encoded in RGBcolor_t*/
 const RGBcolor_t channel_perm_data[196] = {	

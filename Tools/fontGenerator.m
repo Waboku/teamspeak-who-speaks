@@ -2,10 +2,10 @@
 %project that requires small font redering implementations
 
 %The parameters you should edit
-font = 'Comic Sans';
-size = 14;
+font = 'Arial';
+size = 16;      %This size will go as BIG as the 16-bit data type allows
 bold = false;
-space_width = 5;
+space_width = 4;
 
 
 %path to the output for the image.h files, relative to the git root
@@ -69,15 +69,15 @@ fprintf(fileID,'#include "../text.h"\n');
 fprintf(fileID,'\n');
 fprintf(fileID,['//This font is ' font_name ' size ' num2str(size) '\n']);
 fprintf(fileID,'\n');
-fprintf(fileID,['static const uint8_t fontName[] = "' font_name '";\n']);
-fprintf(fileID,['static const uint8_t fontWidth[' num2str(length(charset)+1) '];\n']);
-fprintf(fileID,['static const uint16_t fontData['  num2str((length(charset)+1)*(height+1)) '];\n']);
+fprintf(fileID,['static const uint8_t ' font '_fontName[] = "' font_name '";\n']);
+fprintf(fileID,['static const uint8_t ' font '_fontWidth[' num2str(length(charset)+1) '];\n']);
+fprintf(fileID,['static const uint16_t ' font '_fontData['  num2str((length(charset)+1)*(height)) '];\n']);
 fprintf(fileID,'\n');
-fprintf(fileID,['const font_t ' lower(font) ' = {.name = fontName, .charWidth = fontWidth, .charData = fontData, .height = ' num2str(height+1) ', .totalCharAmount = ' num2str(length(charset)+1) '};\n']);
+fprintf(fileID,['const font_t ' lower(font) ' = {.name = ' font '_fontName, .charWidth = ' font '_fontWidth, .charData = ' font '_fontData, .height = ' num2str(height) ', .totalCharAmount = ' num2str(length(charset)+1) '};\n']);
 fprintf(fileID,'\n');
 fprintf(fileID,'\n');
 
-fprintf(fileID, ['static const uint8_t fontWidth[' num2str(length(charset)+1) '] =\t{']);
+fprintf(fileID, ['static const uint8_t ' font '_fontWidth[' num2str(length(charset)+1) '] =\t{']);
 fprintf(fileID,[ num2str(space_width) ', ']);
 for char = 1:length(charset)
     [x,y] = find(bmp.Bitmaps{char}(:,:) == 1);
@@ -90,10 +90,10 @@ end
 fprintf(fileID, '};\n\n');
 fprintf(fileID,'\n');
 fprintf(fileID, '/* the actual system font, sorted in ASCII, the comment near every sub-array specifies the character*/');
-fprintf(fileID, ['\nstatic const uint16_t fontData[' num2str((length(charset)+1)*(height+1)) '] = \t\n']);
+fprintf(fileID, ['\nstatic const uint16_t ' font '_fontData[' num2str((length(charset)+1)*(height)) '] = \t\n']);
 fprintf(fileID, '\t{\t');
 
-for i = lowth:height+lowth
+for i = lowth+1:height+lowth
       fprintf(fileID,'0x0000, ');
 end
 fprintf(fileID,[ '\t\t//'' ''\n']);
@@ -109,7 +109,7 @@ for char = 1:length(charset)
     width = stop - start;
     %width = length(bmp.Bitmaps{char}(1,:));
     char_data = uint16(zeros(height+lowth+1,1));
-    for i = lowth:height+lowth
+    for i = lowth+1:height+lowth
         k = 1;   
         for j = start:stop+1
             k = k + 1;

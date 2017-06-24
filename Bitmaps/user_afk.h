@@ -14,7 +14,7 @@
 
 const RGBcolor_t user_afk_data[196];
 
-bitmap_t user_afk = {.xSize = 14, .ySize = 14, .data = user_afk_data};
+const bitmap_t user_afk = {.xSize = 14, .ySize = 14, .data = user_afk_data};
 
 /*The image data encoded in RGBcolor_t*/
 const RGBcolor_t user_afk_data[196] = {	

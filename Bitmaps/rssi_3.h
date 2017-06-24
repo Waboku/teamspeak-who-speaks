@@ -14,7 +14,7 @@
 
 const RGBcolor_t rssi_3_data[169];
 
-bitmap_t rssi_3 = {.xSize = 13, .ySize = 13, .data = rssi_3_data};
+const bitmap_t rssi_3 = {.xSize = 13, .ySize = 13, .data = rssi_3_data};
 
 /*The image data encoded in RGBcolor_t*/
 const RGBcolor_t rssi_3_data[169] = {	

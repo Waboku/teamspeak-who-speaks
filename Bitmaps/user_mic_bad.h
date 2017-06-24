@@ -14,7 +14,7 @@
 
 const RGBcolor_t user_mic_bad_data[196];
 
-bitmap_t user_mic_bad = {.xSize = 14, .ySize = 14, .data = user_mic_bad_data};
+const bitmap_t user_mic_bad = {.xSize = 14, .ySize = 14, .data = user_mic_bad_data};
 
 /*The image data encoded in RGBcolor_t*/
 const RGBcolor_t user_mic_bad_data[196] = {	

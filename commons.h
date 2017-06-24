@@ -61,5 +61,15 @@
 #define ESP_SHTDWN_PORT	PORT->Group[0]
 #define ESP_SHTDWN_bm	(1<<28)
 
+#define MAX(a,b) \
+({ __typeof__ (a) _a = (a); \
+   __typeof__ (b) _b = (b); \
+ _a > _b ? _a : _b; })
+ 
+ 
+#define MIN(a,b) \
+({ __typeof__ (a) _a = (a); \
+   __typeof__ (b) _b = (b); \
+ _a < _b ? _a : _b; })
 
 #endif /* COMMONS_H_ */

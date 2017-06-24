@@ -14,7 +14,7 @@
 
 const RGBcolor_t TS_logo_data[256];
 
-bitmap_t TS_logo = {.xSize = 16, .ySize = 16, .data = TS_logo_data};
+const bitmap_t TS_logo = {.xSize = 16, .ySize = 16, .data = TS_logo_data};
 
 /*The image data encoded in RGBcolor_t*/
 const RGBcolor_t TS_logo_data[256] = {	

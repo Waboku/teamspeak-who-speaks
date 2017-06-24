@@ -12,12 +12,12 @@
 #define BITMAPS_H_
 
 
-#include "JDBt.h"
 #include "TS_logo.h"
+#include "channel_colapse.h"
 #include "channel_perm.h"
 #include "channel_temp.h"
-#include "default_icon.h"
-#include "password_icon.h"
+#include "icon_default.h"
+#include "icon_password.h"
 #include "rssi_0.h"
 #include "rssi_1.h"
 #include "rssi_2.h"
@@ -28,7 +28,7 @@
 #include "user_mic_mute.h"
 #include "user_quite.h"
 #include "user_sound_mute.h"
-#include "user_talking.h"
+#include "user_speaking.h"
 
 
 #endif /*BITMAPS_H_*/

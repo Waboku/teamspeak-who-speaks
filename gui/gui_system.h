@@ -1,13 +1,14 @@
 /*
- * keyboard.h
+ * gui_system.h
  *
- * Created: 26-5-2017 11:33:58
+ * Created: 20-6-2017 15:55:49
  *  Author: P
  */ 
 
 
-#ifndef KEYBOARD_H_
-#define KEYBOARD_H_
+#ifndef GUI_SYSTEM_H_
+#define GUI_SYSTEM_H_
+
 
 typedef enum{
 	INACTIVE, LETTER_SMALL, LETTER_CAPITAL, SYMBOL
@@ -35,11 +36,6 @@ typedef struct{
 #define KB_COL1_S 	KB_COL2_S-KB_COL_SPACING
 #define KB_COL0_S	KB_COL1_S-KB_COL_SPACING
 
-#define KB_BORDER_COLOR (RGBcolor_t){.red = 30, .green = 110, .blue = 110}
-#define KB_KEY_COLOR (RGBcolor_t){.red = 71, .green = 71, .blue = 71}
-#define KB_CHAR_COLOR (RGBcolor_t){.red = 220, .green = 220, .blue = 220}
-#define KB_BCKGND_COLOR (RGBcolor_t){.red = 31, .green = 31, .blue = 31}
-	
 
 #define KB_CAPITAL_BTN		0x01
 #define KB_BACKSPACE_BTN	0x02
@@ -48,17 +44,21 @@ typedef struct{
 #define KB_SMALL_BTN		0x05
 #define KB_LETTERS_BTN		0x06
 
+#define KB_BORDER_COLOR (RGBcolor_t){.red = 30, .green = 110, .blue = 110}
+#define KB_KEY_COLOR (RGBcolor_t){.red = 71, .green = 71, .blue = 71}
+#define KB_CHAR_COLOR (RGBcolor_t){.red = 220, .green = 220, .blue = 220}
+#define KB_BCKGND_COLOR (RGBcolor_t){.red = 31, .green = 31, .blue = 31}
+
 typedef struct{
 	const uint8_t* const characters[4];
 	const uint8_t* const keyPos[4];
 }keyboard_keys_t;
 
-const extern keyboard_keys_t kb_lettersSmall;
-const extern keyboard_keys_t kb_lettersBig;
-const extern keyboard_keys_t kb_symbols;
+
+void gui_list_renderKeyboard(const keyboard_keys_t *kb);
+uint8_t gui_list_determineKey(const keyboard_keys_t *kb, screen_pos_t touch);
 
 
-void keyboard_render(const keyboard_keys_t *kbKeys);
-uint8_t keyboard_determineKey(const keyboard_keys_t *kb, screen_pos_t touch);
-								
-#endif /* KEYBOARD_H_ */
+
+
+#endif /* GUI_SYSTEM_H_ */

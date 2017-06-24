@@ -14,7 +14,7 @@
 
 const RGBcolor_t channel_temp_data[196];
 
-bitmap_t channel_temp = {.xSize = 14, .ySize = 14, .data = channel_temp_data};
+const bitmap_t channel_temp = {.xSize = 14, .ySize = 14, .data = channel_temp_data};
 
 /*The image data encoded in RGBcolor_t*/
 const RGBcolor_t channel_temp_data[196] = {	

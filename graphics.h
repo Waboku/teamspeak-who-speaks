@@ -68,7 +68,7 @@ typedef struct{
 void graphics_drawLine(screen_pos_t start, screen_pos_t end, RGBcolor_t color);
 void graphics_drawRectangle(screen_pos_t start, screen_pos_t end, RGBcolor_t color);
 void graphics_drawSolidRectangle(screen_pos_t start, screen_pos_t end, RGBcolor_t color);
-void graphics_drawBitmap(screen_pos_t top_left, const bitmap_t *bitmap);
+void graphics_drawBitmap(screen_pos_t topLeft, const bitmap_t *bitmap);
 
 
 #endif /* GRAPHICS_H_ */

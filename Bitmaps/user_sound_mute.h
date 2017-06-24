@@ -14,7 +14,7 @@
 
 const RGBcolor_t user_sound_mute_data[196];
 
-bitmap_t user_sound_mute = {.xSize = 14, .ySize = 14, .data = user_sound_mute_data};
+const bitmap_t user_sound_mute = {.xSize = 14, .ySize = 14, .data = user_sound_mute_data};
 
 /*The image data encoded in RGBcolor_t*/
 const RGBcolor_t user_sound_mute_data[196] = {	

@@ -14,7 +14,7 @@
 
 const RGBcolor_t server_data[182];
 
-bitmap_t server = {.xSize = 14, .ySize = 13, .data = server_data};
+const bitmap_t server = {.xSize = 14, .ySize = 13, .data = server_data};
 
 /*The image data encoded in RGBcolor_t*/
 const RGBcolor_t server_data[182] = {	

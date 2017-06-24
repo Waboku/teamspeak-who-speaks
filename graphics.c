@@ -98,6 +98,18 @@ void graphics_drawRectangle(screen_pos_t start, screen_pos_t end, RGBcolor_t col
 		graphics_drawRectangle((screen_pos_t){start.x, end.y}, (screen_pos_t){end.x, start.y}, color);
 		return;
 	}
+	
+	if(start.x > LCD_X_MAX){
+		return;
+	}else if(end.x > LCD_X_MAX){
+		end.x = LCD_X_MAX;
+	}
+	
+	if(start.y > LCD_Y_MAX){
+		return;
+	}else if(end.y > LCD_Y_MAX){
+		end.y = LCD_Y_MAX;
+	}
 
 	st7775_setCursor(start);
 	st7775_setGramMode();
@@ -137,6 +149,18 @@ void graphics_drawSolidRectangle(screen_pos_t start, screen_pos_t end, RGBcolor_
 		graphics_drawSolidRectangle((screen_pos_t){start.x, end.y}, (screen_pos_t){end.x, start.y}, color);
 		return;
 	}
+	
+	if(start.x > LCD_X_MAX){
+		return;
+	}else if(end.x > LCD_X_MAX){
+		end.x = LCD_X_MAX;
+	}
+	
+	if(start.y > LCD_Y_MAX){
+		return;
+	}else if(end.y > LCD_Y_MAX){
+		end.y = LCD_Y_MAX;
+	}
 
 	st7775_setCursor(start);
 	st7775_setRegion(start,end);
@@ -156,17 +180,36 @@ void graphics_drawSolidRectangle(screen_pos_t start, screen_pos_t end, RGBcolor_
 
 /*! \brief Function that draws a bitmap on the coordinate specified
 **
-*	\param top_left The coordinate for the top left pixel of the bitmap, the rest of the bitmap will continue down and to the right
-*	\param bitmap The struct that contains the data required for the bitmap, easily generated with the bitmap.m file located in this project
+*	\param topLeft The coordinate for the top left pixel of the bitmap, the rest of the bitmap will continue down and to the right
+*	\param bitmap The struct that contains the data required for the bitmap, easily generated with the bitmap.m file located in the tools folder
 *
 */
-void graphics_drawBitmap(screen_pos_t top_left, const bitmap_t *bitmap){
-	st7775_setCursor(top_left);	
-	st7775_setRegion(top_left, (screen_pos_t){top_left.x + bitmap->xSize-1, top_left.y + bitmap->ySize-1});
-	st7775_setGramMode();
-	for( uint16_t i = 0 ; i < bitmap->xSize * bitmap->ySize; i++){		
-		st7775_writePixel(bitmap->data[i]);		
+void graphics_drawBitmap(screen_pos_t topLeft, const bitmap_t *bitmap){
+	if(topLeft.x > LCD_X_MAX || topLeft.y > LCD_Y_MAX){
+		return;
 	}
+	
+	uint16_t xWidth = bitmap->xSize - 1;
+	uint16_t yWidth = bitmap->ySize - 1;
+	
+	if(topLeft.x + bitmap->xSize > LCD_X_MAX){
+		xWidth = LCD_X_MAX - topLeft.x;
+	}
+	
+	if(topLeft.y + bitmap->ySize > LCD_Y_MAX){
+		yWidth = LCD_Y_MAX - topLeft.y;
+	}	
+	
+	st7775_setCursor(topLeft);	
+	st7775_setRegion(topLeft, (screen_pos_t){topLeft.x + xWidth, topLeft.y + yWidth});
+	st7775_setGramMode();	
+	
+	for(uint16_t y = 0 ; y <= yWidth; y++){
+		for(uint16_t x = 0; x <= xWidth; x++){
+			st7775_writePixel(bitmap->data[x + y*bitmap->xSize]);
+		}
+	}
+	
 	st7775_setRegion((screen_pos_t){0, 0},(screen_pos_t){LCD_X_MAX, LCD_Y_MAX});
 }
 

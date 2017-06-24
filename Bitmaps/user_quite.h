@@ -14,7 +14,7 @@
 
 const RGBcolor_t user_quite_data[196];
 
-bitmap_t user_quite = {.xSize = 14, .ySize = 14, .data = user_quite_data};
+const bitmap_t user_quite = {.xSize = 14, .ySize = 14, .data = user_quite_data};
 
 /*The image data encoded in RGBcolor_t*/
 const RGBcolor_t user_quite_data[196] = {	

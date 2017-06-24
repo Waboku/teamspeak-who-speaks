@@ -63,7 +63,7 @@ for fileCount = 1:length(list)
     fprintf(bitmapFileID,['//Image: ' filename '   size: ' num2str(x) 'x' num2str(y) ' pixels \n']);
     fprintf(bitmapFileID, ['\nconst RGBcolor_t ' filename '_data[' num2str(y*x) '];\n']);
     fprintf(bitmapFileID,'\n');
-    fprintf(bitmapFileID,['bitmap_t ' filename ' = {.xSize = ' num2str(x) ', .ySize = ' num2str(y) ', .data = ' filename '_data};']);
+    fprintf(bitmapFileID,['const bitmap_t ' filename ' = {.xSize = ' num2str(x) ', .ySize = ' num2str(y) ', .data = ' filename '_data};']);
     fprintf(bitmapFileID,'\n');
     fprintf(bitmapFileID,'\n');
     fprintf(bitmapFileID, '/*The image data encoded in RGBcolor_t*/');
