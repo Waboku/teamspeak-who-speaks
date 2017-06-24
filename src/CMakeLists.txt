@@ -107,10 +107,14 @@ add_custom_command(
     # Generate .lst file
     COMMAND
         ${CMAKE_OBJDUMP} -h -S ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/${ELF_FILE} > ${LST_FILE}
-    
+
     # Generate .hex file
     COMMAND
         ${CMAKE_OBJCOPY} -j .text -j .data -O ihex ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/${ELF_FILE} ${HEX_FILE}
+
+    # Print size output
+    COMMAND
+        ${CMAKE_SIZE} ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/${ELF_FILE}
 
     DEPENDS ${ELF_FILE}
     )
