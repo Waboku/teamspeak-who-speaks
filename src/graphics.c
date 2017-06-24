@@ -9,7 +9,6 @@
 #include "st7775.h"
 #include "st7775_cmd.h"
 #include "graphics.h"
-#include "sam.h"
 
 
 /*! \brief Function that draws a single pixel line from	two coordinate sets

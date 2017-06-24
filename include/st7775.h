@@ -33,7 +33,7 @@
 
 
 
-void st7775_init();
+void st7775_init(void);
 void st7775_setCursor(screen_pos_t position);
 void st7775_setRegion(screen_pos_t start, screen_pos_t end);
 void st7775_setGramMode(void);

@@ -6,9 +6,8 @@
  */ 
 
 #include "../graphics.h"
-#include "sam.h"
-#include "gui.h"
-#include "gui_system.h"
+#include "gui/gui.h"
+#include "gui/gui_system.h"
 #include "../text.h"
 
 

@@ -9,7 +9,6 @@
 #ifndef TEXT_H_
 #define TEXT_H_
 
-#include "sam.h"
 
 #define PRINT_UNKNOWN_CHAR 1
 
@@ -32,6 +31,7 @@ uint8_t text_getLetterWidth(uint8_t letter, const font_t *font);
 uint8_t text_RenderString(screen_pos_t topLeft, uint8_t *str, const font_t *font, RGBcolor_t color);
 uint16_t text_getStringWidth(uint8_t *str, const font_t *font);
 uint16_t text_getNextWordWidth(uint8_t *str, const font_t *font);
-
+screen_pos_t text_RenderWrapedString(screen_pos_t topLeft, screen_pos_t wrap, uint8_t *str, const font_t *font, RGBcolor_t color);
+screen_pos_t text_RenderWordWrapedString(screen_pos_t topLeft, screen_pos_t wrap, uint8_t *str, const font_t *font, RGBcolor_t color);
 
 #endif /* TEXT_H_ */

@@ -6,7 +6,7 @@
  */ 
 
 #include "../graphics.h"
-#include "gui.h"
+#include "gui/gui.h"
 #include "../Fonts/Comic_Sans.h"
 #include "../Fonts/Comic_Sans_Bold.h"
 #include "../Fonts/Arial_Bold.h"

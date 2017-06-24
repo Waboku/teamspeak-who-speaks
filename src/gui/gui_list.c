@@ -6,10 +6,9 @@
  */ 
 
 #include <stdlib.h>
-#include "sam.h"
 #include "../graphics.h"
-#include "gui_list.h"
-#include "gui.h"
+#include "gui/gui_list.h"
+#include "gui/gui.h"
 #include "../Bitmaps/all_bitmaps.h"
 
 
@@ -25,8 +24,6 @@
 #define LIST_ITEM_START		2
 #define LIST_ITEM_HEIGHT	15
 #define MAX_ITEMS_ON_SCREEN ((LCD_Y_SIZE-(LIST_ITEM_START*2))/LIST_ITEM_HEIGHT)
-
-
 
 
 

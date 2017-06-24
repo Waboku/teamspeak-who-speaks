@@ -11,6 +11,6 @@
 
 
 
-
+screen_pos_t touch_adcToScreen(uint16_t adc_x, uint16_t adc_y);
 
 #endif /* TOUCH_H_ */

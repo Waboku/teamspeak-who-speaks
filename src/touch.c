@@ -7,6 +7,7 @@
 
 #include "commons.h"
 #include "graphics.h"
+#include "touch.h"
 
 
 screen_pos_t touch_adcToScreen(uint16_t adc_x, uint16_t adc_y){

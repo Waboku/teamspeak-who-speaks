@@ -55,8 +55,8 @@ typedef struct{
 }keyboard_keys_t;
 
 
-void gui_list_renderKeyboard(const keyboard_keys_t *kb);
-uint8_t gui_list_determineKey(const keyboard_keys_t *kb, screen_pos_t touch);
+void gui_system_renderKeyboard(const keyboard_keys_t *kb);
+uint8_t gui_system_determineKey(const keyboard_keys_t *kb, screen_pos_t touch);
 
 
 

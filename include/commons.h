@@ -9,8 +9,7 @@
 #ifndef COMMONS_H_
 #define COMMONS_H_
 
-#include "sam.h"
-
+#include <inttypes.h>
 
 #define LCD_DATA_PORT	PORT->Group[0]
 #define LCD_DATA0_bm	(1<<0)
@@ -60,6 +59,8 @@
 
 #define ESP_SHTDWN_PORT	PORT->Group[0]
 #define ESP_SHTDWN_bm	(1<<28)
+
+
 
 #define MAX(a,b) \
 ({ __typeof__ (a) _a = (a); \

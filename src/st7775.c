@@ -10,7 +10,6 @@
 #include "st7775.h"
 #include "st7775_cmd.h"
 #include "graphics.h"
-#include "sam.h"
 
 
 
@@ -28,21 +27,15 @@ static const uint16_t command_data[] = {0x011C, 0x0100, 0x1230, 0x0808, 0x0002, 
 
 /*! \brief Sends a byte over the LCD bus and clocks it in.
 *
-*	uses nop's to adhere to the slow speed of the LCD
-*
 *	\param data The byte that should appear on the bus.
 *
 */
 static void st7775_writeByte(uint8_t data){
 	
 	WR_LO(); //set clock low	
-	asm volatile("NOP");
 	LCD_DATA_PORT.OUTSET.reg = data; //put data on the bus
 	LCD_DATA_PORT.OUTCLR.reg = ~(data)&LCD_DATA_gm; //put data on the bus
-	asm volatile("NOP");
-	asm volatile("NOP");
 	WR_HI();	//set clock high again
-	asm volatile("NOP");
 }
 
 

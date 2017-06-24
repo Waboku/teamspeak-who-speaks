@@ -6,17 +6,23 @@
  */ 
 
 
-#include <sam.h>
-#include <asf.h>
+
+
+#include "asf.h"
 #include "conf_usb.h"
 #include "stdio_setup.h"
 #include <delay.h>
+#include <stdio.h>
+#include <stdlib.h>
 #include "commons.h"
 #include "st7775.h"
 #include "st7775_cmd.h"
 #include "graphics.h"
 #include "text.h"
 #include "gui/gui_list.h"
+
+#define RAND_POS (screen_pos_t){rand()%LCD_X_SIZE,rand()%LCD_Y_SIZE}
+#define RAND_COLOR (RGBcolor_t){rand()%255,rand()%255,rand()%255}
 
 
 static void pin_init(void)
@@ -38,18 +44,20 @@ int main(void)
 	cpu_irq_enable();
 
 	system_init();
+	pin_init();
 	udc_start();
 	delay_init();
 	stdio_init();
 	
 	st7775_init();
 	
+	
+	printf("Starting..\n");	
+	
 	graphics_drawSolidRectangle((screen_pos_t){0,0},(screen_pos_t){LCD_X_MAX,LCD_Y_MAX},WHITE);
-
-		
-
+	
+	
 	while (true) {
-		printf("Hello world\r\n");
-		delay_ms(1000);
+		graphics_drawSolidRectangle(RAND_POS,RAND_POS,RAND_COLOR);
 	}
 }

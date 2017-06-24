@@ -45,7 +45,7 @@ typedef struct{
 	gui_list_object_type_t objectType;
 }gui_list_object_t;
 
-
+void gui_destroyObject(gui_list_object_t* obj);
 screen_pos_t gui_objToCoords(gui_list_object_t *obj, int16_t screenListPos);
 gui_list_object_t* gui_createObject(gui_list_object_type_t type);
 void gui_renderListObject(gui_list_object_t *obj, int16_t screenListPosition);
