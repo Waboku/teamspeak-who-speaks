@@ -6,7 +6,7 @@ clearvars;
 assetsPath = '\Tools\Assets';
 
 %path to the output for the image.h files, relative to the git root
-bitmapPath = '\Bitmaps';
+bitmapPath = '\include\bitmaps';
 
 
 

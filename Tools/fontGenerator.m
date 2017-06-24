@@ -1,6 +1,8 @@
 %Generate font in a C readable format for easy integration into a embedded
 %project that requires small font redering implementations
 
+clearvars;
+
 %The parameters you should edit
 font = 'Arial';
 size = 16;      %This size will go as BIG as the 16-bit data type allows
@@ -9,7 +11,7 @@ space_width = 4;
 
 
 %path to the output for the image.h files, relative to the git root
-fontPath = '\Fonts';
+fontPath = '\include\fonts';
 
 
 
