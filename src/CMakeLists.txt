@@ -18,7 +18,6 @@ set(CMAKE_C_FLAGS
 -DUSART_CALLBACK_MODE=true \
 -DTC_ASYNC=true \
 -DWDT_CALLBACK_MODE=true \
--Og \
 -fdata-sections \
 -ffunction-sections \
 -mlong-calls \
