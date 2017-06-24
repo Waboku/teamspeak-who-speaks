@@ -74,9 +74,16 @@ include_directories(
 add_subdirectory(ASF) 
 include_directories("${ASF_HEADERS}")
 
+set(ELF_FILE ${PROJECT_NAME}.elf)
+set(MAP_FILE ${PROJECT_NAME}.map)
+set(HEX_FILE ${PROJECT_NAME}.hex)
+set(LST_FILE ${PROJECT_NAME}.lst)
+
+set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -Wl,-Map,${MAP_FILE}")
+
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${PROJECT_SOURCE_DIR})
 
-add_executable(teamspeak-who-speaks.elf
+add_executable(${ELF_FILE}
     "${PROJECT_SOURCE_DIR}/src/main.c"
     "${PROJECT_SOURCE_DIR}/src/stdio_setup.c"
     "${PROJECT_SOURCE_DIR}/src/usb_callback.c"
@@ -90,4 +97,20 @@ add_executable(teamspeak-who-speaks.elf
     "${PROJECT_SOURCE_DIR}/src/gui/gui_popup.c"
     "${PROJECT_SOURCE_DIR}/src/gui/gui_system.c"
     "${SOURCE_FILES}"
+    )
+
+
+add_custom_command(
+    TARGET ${ELF_FILE}
+    POST_BUILD
+
+    # Generate .lst file
+    COMMAND
+        ${CMAKE_OBJDUMP} -h -S ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/${ELF_FILE} > ${LST_FILE}
+    
+    # Generate .hex file
+    COMMAND
+        ${CMAKE_OBJCOPY} -j .text -j .data -O ihex ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/${ELF_FILE} ${HEX_FILE}
+
+    DEPENDS ${ELF_FILE}
     )
