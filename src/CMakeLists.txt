@@ -55,7 +55,7 @@ set(CMAKE_C_FLAGS
 -Wmissing-declarations \
 -Wformat \
 -Wmissing-format-attribute \
--Wno-deprecated-declarations\
+-Wno-deprecated-declarations \
 -Wpacked \
 -Wredundant-decls \
 -Wnested-externs \
@@ -82,5 +82,13 @@ add_executable(teamspeak-who-speaks.elf
     "${PROJECT_SOURCE_DIR}/src/stdio_setup.c"
     "${PROJECT_SOURCE_DIR}/src/usb_callback.c"
     "${PROJECT_SOURCE_DIR}/src/linkedlist.c"
+    "${PROJECT_SOURCE_DIR}/src/graphics.c"
+    "${PROJECT_SOURCE_DIR}/src/st7775.c"
+    "${PROJECT_SOURCE_DIR}/src/text.c"
+    "${PROJECT_SOURCE_DIR}/src/touch.c"
+    "${PROJECT_SOURCE_DIR}/src/gui/gui.c"
+    "${PROJECT_SOURCE_DIR}/src/gui/gui_list.c"
+    "${PROJECT_SOURCE_DIR}/src/gui/gui_popup.c"
+    "${PROJECT_SOURCE_DIR}/src/gui/gui_system.c"
     "${SOURCE_FILES}"
     )
