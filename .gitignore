@@ -50,3 +50,13 @@ modules.order
 Module.symvers
 Mkfile.old
 dkms.conf
+
+# Atmel Studio Project Files
+*.cproj
+*.componentinfo.xml
+*.atsln
+.vs/
+
+# Cmake generated files (build directory)
+# In-tree builds should not be used
+/build
