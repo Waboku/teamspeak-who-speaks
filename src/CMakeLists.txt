@@ -5,6 +5,7 @@ set(CMAKE_C_FLAGS
 "${CMAKE_C_FLAGS} \
 -mthumb \
 -D__SAMD21E17A__ \
+-g \
 -DDEBUG \
 -DBOARD=USER_BOARD \
 -DARM_MATH_CM0PLUS=true \
@@ -92,3 +93,4 @@ add_executable(teamspeak-who-speaks.elf
     "${PROJECT_SOURCE_DIR}/src/gui/gui_system.c"
     "${SOURCE_FILES}"
     )
+ 

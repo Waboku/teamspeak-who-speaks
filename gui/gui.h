@@ -23,6 +23,14 @@ extern RGBcolor_t gui_listTextColor;
 extern RGBcolor_t gui_popupColor;
 extern RGBcolor_t gui_borderColor;
 
+typedef struct{
+	screen_pos_t touchLast;
+	screen_pos_t touchStart;
+	touch_state_t touchState;
+	gui_state_t screenState;
+	keyboard_state_t keyboardState;
+	popup_state_t popState;
+}system_state_t;
 
 typedef enum{
 	NO_TOUCH, TOUCHING, TOUCH_WAITING, TOUCH_MISSED
@@ -30,7 +38,7 @@ typedef enum{
 
 typedef enum{
 	IDLE, SELECT_WIFI, SELECT_SERVER, SELECT_CREDENTIALS, DISPLAY_USERS
-}screen_state_t;
+}gui_state_t;
 
 
 

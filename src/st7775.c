@@ -134,6 +134,7 @@ static void st7775_writeMode(void){
 *
 */
 void st7775_setCursor(screen_pos_t position){
+	st7775_writeMode();
 	writeWr(HORI_ADDR_SET,position.x);
 	writeWr(VERT_ADDR_SET,position.y);
 }
@@ -146,6 +147,7 @@ void st7775_setCursor(screen_pos_t position){
 *
 */
 void st7775_setRegion(screen_pos_t start, screen_pos_t end){
+	st7775_writeMode();
 	writeWr(HORI_ADDR_END_POS, end.x);
 	writeWr(HORI_ADDR_START_POS,start.x);
 	writeWr(VERT_ADDR_END_POS,end.y);
@@ -179,6 +181,7 @@ void st7775_writePixel(const RGBcolor_t color){
 *
 */
 void st7775_writeSpecificPixel(screen_pos_t position, RGBcolor_t color){
+	st7775_writeMode();
 	st7775_setCursor(position);
 	writeWrReg(READ_WRITE_GRAM);
 	st7775_writePixel(color);

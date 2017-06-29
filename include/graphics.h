@@ -37,14 +37,6 @@ typedef struct{
 }RGBcolor_t;
 
 
-typedef enum{
-	NO_TOUCH, TOUCHING, TOUCH_WAITING, TOUCH_MISSED
-}touch_state_t;
-
-typedef enum{
-	IDLE, SELECT_WIFI, SELECT_SERVER, SELECT_CREDENTIALS, DISPLAY_USERS
-}screen_state_t;
-
 	
 typedef struct{
 	uint16_t xSize;

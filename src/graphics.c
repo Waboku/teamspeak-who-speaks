@@ -57,7 +57,7 @@ void graphics_drawLine(screen_pos_t start, screen_pos_t end, RGBcolor_t color){
 		}
 
 		
-		}else{
+	}else{
 		int16_t decision = ((deltaX)<<1)-deltaY;
 		while(start.y != end.y){
 			st7775_writeSpecificPixel(end, color);
@@ -160,7 +160,7 @@ void graphics_drawSolidRectangle(screen_pos_t start, screen_pos_t end, RGBcolor_
 	}else if(end.y > LCD_Y_MAX){
 		end.y = LCD_Y_MAX;
 	}
-
+	
 	st7775_setCursor(start);
 	st7775_setRegion(start,end);
 	st7775_setGramMode();

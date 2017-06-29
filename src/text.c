@@ -155,8 +155,9 @@ screen_pos_t text_RenderWrapedString(screen_pos_t topLeft, screen_pos_t wrap, ui
 *	\return The width of the string that was just printed. returns zero if invalid character was specified
 */
 screen_pos_t text_RenderWordWrapedString(screen_pos_t topLeft, screen_pos_t wrap, uint8_t *str, const font_t *font, RGBcolor_t color){
-	screen_pos_t start = topLeft;
 	
+	screen_pos_t start = topLeft;
+	uint8_t xMax = 0;
 	
 	if(topLeft.y + font->height > wrap.y){
 		return topLeft;
