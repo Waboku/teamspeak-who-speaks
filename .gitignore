@@ -57,6 +57,10 @@ dkms.conf
 *.atsln
 .vs/
 
+#J-link debugger files
+*.log
+*.config
+
 # Cmake generated files (build directory)
 # In-tree builds should not be used
 /build
