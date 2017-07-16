@@ -2,7 +2,7 @@
 
 unexpand_func () {
     echo "File: $1"
-    unexpand -t 4 "$1" > "$1.tmp"
+    unexpand -t 4 --first-only "$1" > "$1.tmp"
     mv "$1.tmp" "$1"
 }
 
