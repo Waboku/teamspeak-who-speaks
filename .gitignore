@@ -64,3 +64,6 @@ dkms.conf
 # Cmake generated files (build directory)
 # In-tree builds should not be used
 /build
+
+# cmocka directory downloaded by cmake
+/test/cmocka/
