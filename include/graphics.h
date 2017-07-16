@@ -24,10 +24,10 @@ typedef struct{
 	#if (LCD_X_MAX <= UINT8_MAX) && (LCD_Y_MAX <= UINT8_MAX)
 	uint8_t x;
 	uint8_t y;
- 	#else
- 	uint16_t x;
- 	uint16_t y;
- 	#endif
+	#else
+	uint16_t x;
+	uint16_t y;
+	#endif
 }screen_pos_t;
 
 typedef struct{
