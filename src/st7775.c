@@ -20,6 +20,7 @@ static void st7775_writeMode(void);
 static void writeWrReg(uint8_t command);
 static void writeWrData(uint16_t data);
 
+
 //initialization of the LCD,
 static const uint8_t   command_reg[] = {DRIVER_OUTPUT_CTRL, LCD_DRIVING_CTRL, ENTRY_MODE, DISP_CTRL_2, RGB_INTRFC_CTRL_1,  POWER_CTRL_2, POWER_CTRL_3, POWER_CTRL_4, POWER_CTRL_5,  GATE_SCAN_CTRL, VERT_SCROLL_CTRL_1, VERT_SCROLL_CTRL_2, VERT_SCROLL_CTRL_3, PARTIAL_DRIVING_CTRL_1, PARTIAL_DRIVING_CTRL_2, HORI_ADDR_END_POS, HORI_ADDR_START_POS, VERT_ADDR_END_POS, VERT_ADDR_START_POS,  GAMMA_CTRL_1, GAMMA_CTRL_2, GAMMA_CTRL_3, GAMMA_CTRL_4, GAMMA_CTRL_5, GAMMA_CTRL_6, GAMMA_CTRL_7, GAMMA_CTRL_8, GAMMA_CTRL_9, GAMMA_CTRL_10, HORI_ADDR_SET, VERT_ADDR_SET, DISP_CTRL_1};
 static const uint16_t command_data[] = {0x011C, 0x0100, 0x1230, 0x0808, 0x0002, 0x1038, 0x1411, 0x0202, 0x0313, 0x0000, 0x00DB, 0x0000, 0x0000, 0x00DB, 0x0000, 0x00AF, 0x0000, 0x00DB, 0x0000, 0x0000, 0x0300, 0x0103, 0x2011, 0x0703, 0x0000, 0x0400, 0x0107, 0x2011, 0x0703, 0x0000, 0x0000, 0x1017};
@@ -134,7 +135,12 @@ static void st7775_writeMode(void){
 *
 */
 void st7775_setCursor(screen_pos_t position){
-	writeWr(HORI_ADDR_SET,position.x);
+
+#if FLIPPED
+	writeWr(HORI_ADDR_SET, LCD_X_MAX - position.x);
+#else
+	writeWr(HORI_ADDR_SET, position.x);
+#endif	
 	writeWr(VERT_ADDR_SET,position.y);
 }
 
@@ -146,8 +152,15 @@ void st7775_setCursor(screen_pos_t position){
 *
 */
 void st7775_setRegion(screen_pos_t start, screen_pos_t end){
-	writeWr(HORI_ADDR_END_POS, end.x);
-	writeWr(HORI_ADDR_START_POS,start.x);
+
+	#if FLIPPED
+		writeWr(HORI_ADDR_END_POS, LCD_X_MAX - start.x);
+		writeWr(HORI_ADDR_START_POS, LCD_X_MAX - end.x);
+	#else
+		writeWr(HORI_ADDR_END_POS, end.x);
+		writeWr(HORI_ADDR_START_POS,start.x);
+	#endif
+
 	writeWr(VERT_ADDR_END_POS,end.y);
 	writeWr(VERT_ADDR_START_POS,start.y);
 }

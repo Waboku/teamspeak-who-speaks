@@ -11,6 +11,8 @@
 
 #include <inttypes.h>
 
+#define FLIPPED 1
+
 #define LCD_DATA_PORT	PORT->Group[0]
 #define LCD_DATA0_bm	(1<<0)
 #define LCD_DATA1_bm	(1<<1)
