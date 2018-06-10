@@ -211,9 +211,3 @@ void graphics_drawBitmap(screen_pos_t topLeft, const bitmap_t *bitmap){
 	
 	st7775_setRegion((screen_pos_t){0, 0},(screen_pos_t){LCD_X_MAX, LCD_Y_MAX});
 }
-
-
-
-
-
-

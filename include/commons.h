@@ -11,7 +11,7 @@
 
 #include <inttypes.h>
 
-#define FLIPPED 1
+#define FLIPPED 1 //This is a weird define that must be set or cleared sometimes when the display decides everything should be mirrored, this happens every so often and is probabbly a bug in the initialization code
 
 #define LCD_DATA_PORT	PORT->Group[0]
 #define LCD_DATA0_bm	(1<<0)
@@ -61,6 +61,9 @@
 
 #define ESP_SHTDWN_PORT	PORT->Group[0]
 #define ESP_SHTDWN_bm	(1<<28)
+
+
+#define ESP_SERCOM SERCOM1 
 
 
 

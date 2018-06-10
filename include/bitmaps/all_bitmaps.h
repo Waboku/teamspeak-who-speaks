@@ -12,7 +12,15 @@
 #define BITMAPS_H_
 
 
+#include "BIG_F.h"
 #include "TS_logo.h"
+#include "block1.h"
+#include "block2.h"
+#include "block3.h"
+#include "block4.h"
+#include "block5.h"
+#include "block6.h"
+#include "block7.h"
 #include "channel_colapse.h"
 #include "channel_perm.h"
 #include "channel_temp.h"

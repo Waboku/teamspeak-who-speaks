@@ -83,13 +83,13 @@ uint8_t gui_system_determineKey(const keyboard_keys_t *kb, screen_pos_t touch){
 	
 	if(touch.y >= KB_COL3_S){
 		col = 3;
-		}else if(touch.y >= KB_COL2_S){
+	}else if(touch.y >= KB_COL2_S){
 		col = 2;
-		}else if(touch.y >= KB_COL1_S){
+	}else if(touch.y >= KB_COL1_S){
 		col = 1;
-		}else if(touch.y >= KB_COL0_S){
+	}else if(touch.y >= KB_COL0_S){
 		col = 0;
-		}else{
+	}else{
 		return 0x00;
 	}
 	

@@ -9,7 +9,7 @@
 #include "../graphics.h"
 #include "gui/gui_list.h"
 #include "gui/gui.h"
-#include "../Bitmaps/all_bitmaps.h"
+//#include "../Bitmaps/all_bitmaps.h"
 
 
 
@@ -88,54 +88,54 @@ screen_pos_t gui_objToCoords(gui_list_object_t *obj, int16_t screenListPos){
 	return pos;	
 }
 
-bitmap_t const* gui_objToImg(gui_list_object_t *obj){
-	bitmap_t const *img;
-	switch(obj->status){
-		case USER_QUITE:
-		img = &user_quite;
-		break;
-		case USER_SPEAKING:
-		img = &user_speaking;
-		break;
-		case USER_MIC_MUTE:
-		img = &user_mic_mute;
-		break;
-		case USER_MIC_BAD:
-		img = &user_mic_bad;
-		break;
-		case USER_SOUND_MUTE:
-		img = &user_sound_mute;
-		break;
-		case USER_AFK:
-		img = &user_afk;
-		break;
-		case SERVER_RUNNING:
-		img = &server;
-		break;
-		case CHANNEL_PERM:
-		img = &channel_perm;
-		break;
-		case CHANNEL_TEMP:
-		img = &channel_temp;
-		break;
-		case WIFI_GREAT:
-		img = &rssi_3;
-		break;
-		case WIFI_GOOD:
-		img = &rssi_2;
-		break;
-		case WIFI_NORMAL:
-		img  = &rssi_1;
-		break;
-		case WIFI_BAD:
-		img  = &rssi_0;
-		break;
-		default:
-		img = NULL;
-		break;
-	}
-	return img;
-}
+// bitmap_t const* gui_objToImg(gui_list_object_t *obj){
+// 	bitmap_t const *img;
+// 	switch(obj->status){
+// 		case USER_QUITE:
+// 		img = &user_quite;
+// 		break;
+// 		case USER_SPEAKING:
+// 		img = &user_speaking;
+// 		break;
+// 		case USER_MIC_MUTE:
+// 		img = &user_mic_mute;
+// 		break;
+// 		case USER_MIC_BAD:
+// 		img = &user_mic_bad;
+// 		break;
+// 		case USER_SOUND_MUTE:
+// 		img = &user_sound_mute;
+// 		break;
+// 		case USER_AFK:
+// 		img = &user_afk;
+// 		break;
+// 		case SERVER_RUNNING:
+// 		img = &server;
+// 		break;
+// 		case CHANNEL_PERM:
+// 		img = &channel_perm;
+// 		break;
+// 		case CHANNEL_TEMP:
+// 		img = &channel_temp;
+// 		break;
+// 		case WIFI_GREAT:
+// 		img = &rssi_3;
+// 		break;
+// 		case WIFI_GOOD:
+// 		img = &rssi_2;
+// 		break;
+// 		case WIFI_NORMAL:
+// 		img  = &rssi_1;
+// 		break;
+// 		case WIFI_BAD:
+// 		img  = &rssi_0;
+// 		break;
+// 		default:
+// 		img = NULL;
+// 		break;
+// 	}
+// 	return img;
+// }
 
 
 
