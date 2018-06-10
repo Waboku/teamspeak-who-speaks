@@ -1,0 +1,5 @@
+/cygdrive/e/Dropbox/Dev/ts3-status-telnet/build/CMakeFiles/edit_cache.dir
+/cygdrive/e/Dropbox/Dev/ts3-status-telnet/build/CMakeFiles/rebuild_cache.dir
+/cygdrive/e/Dropbox/Dev/ts3-status-telnet/build/src/CMakeFiles/edit_cache.dir
+/cygdrive/e/Dropbox/Dev/ts3-status-telnet/build/src/CMakeFiles/rebuild_cache.dir
+/cygdrive/e/Dropbox/Dev/ts3-status-telnet/build/src/CMakeFiles/TS-Status.dir

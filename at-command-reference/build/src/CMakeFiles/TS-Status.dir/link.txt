@@ -1,0 +1,1 @@
+/usr/bin/cc                 -Wall                           -Wpointer-arith  -Wl,--enable-auto-import CMakeFiles/TS-Status.dir/main.c.o CMakeFiles/TS-Status.dir/socket_at.c.o CMakeFiles/TS-Status.dir/at.c.o  -o TS-Status.exe -Wl,--out-implib,libTS-Status.dll.a -Wl,--major-image-version,0,--minor-image-version,0  

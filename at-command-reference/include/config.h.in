@@ -1,0 +1,5 @@
+#cmakedefine UNIT_TESTING
+#cmakedefine UNIT_TESTING_MEM
+#cmakedefine AT_SOCKET
+
+#cmakedefine TS_SERVERQUERY_PW "${TS_SERVERQUERY_PW}"

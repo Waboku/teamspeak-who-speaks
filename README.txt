@@ -1,0 +1,3 @@
+Not working reference code from a year ago.
+Some stuff can be worked into master eventually, and it kinda shows how to communicate with the wifi module
+Don't know how I feel about the whole UNIX socket api copy...
