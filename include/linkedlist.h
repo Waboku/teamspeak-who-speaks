@@ -3,8 +3,8 @@
 
 /* LinkedList structure */
 typedef struct LinkedList {
-    struct LinkedList *next;
-    void *data[0];
+	struct LinkedList *next;
+	void *data[0];
 } linkedlist_t;
 
 typedef void (*linkedlist_callback)(void *);
